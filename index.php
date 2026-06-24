@@ -1,56 +1,69 @@
 <?php
+require_once 'personnage.php';
 
-class Personnage {
-    public string $nom;
-    public int $pv;
-    public int $force;
-    public int $x;
-    public int $y;
+$heroX = rand(0, 9);
+$heroY = rand(0, 9);
 
-    public function __construct($nom, $pv, $force, $x, $y) {
-        $this->nom = $nom;
-        $this->pv = $pv;
-        $this->force = $force;
-        $this->x = $x;
-        $this->y = $y;
-    }
+do {
+	$monstreX = rand(0, 9);
+	$monstreY = rand(0, 9);
+} while ($heroX === $monstreX && $heroY === $monstreY);
 
-    public function deplacer($direction) {
-        if ($direction == "Haut")   $this->y--;
-        if ($direction == "Bas")    $this->y++;
-        if ($direction == "Gauche") $this->x--;
-        if ($direction == "Droite") $this->x++;
-        
-        echo "[DEPLACEMENT] " . $this->nom . " se deplace vers le " . $direction;
-    }
+$hero = new Personnage("Hero", 100, 30, $heroX, $heroY);
+$monstre = new Personnage("Monstre", 100, 20, $monstreX, $monstreY);
+?>
 
-    public function attaquer($cible) {
-        echo "[ATTAQUE] " . $this->nom . " attaque " . $cible->nom . " !\n";
-        $cible->recevoirDegats($this->force);
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    public function recevoirDegats($degats) {
-        $this->pv -= $degats;
-        if ($this->pv < 0) $this->pv = 0; // Evite les PV negatifs
-        echo "[DEGATS] " . $this->nom . " perd " . $degats . " PV. (PV restants : " . $this->pv . ")\n";
-    }
-}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mini RPG Game</title>
+	<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
 
-echo "=== CREATION DES PERSONNAGES ===\n";
-$joueur = new Personnage("Heros", 100, 50, 0, 0); // Nom, PV, Force, X, Y
-$monstre = new Personnage("Gobelin", 40, 10, 0, 1);
+	<h1>Mini RPG Game</h1>
+	<p>Déplacement: <strong>W, S, A, D</strong> | Attaquer: <strong>Clic gauche</strong> quand le hero est
+		<strong>SUR</strong> le monstre
+	</p>
 
-echo "\n=== DEPLACEMENT ===\n";
-$joueur->deplacer("Bas"); 
+	<div class="header-jeu">
+		<div>
+			<p>Joueur: <span id="hero-pv"><?php echo $hero->pv ?></span> PV</p>
+			<p>Monstre: <span id="monstre-pv"><?php echo $monstre->pv ?></span> PV</p>
+		</div>
 
-echo "\n=== COMBAT ===\n";
-$joueur->attaquer($monstre);
+		<button onclick="window.location.reload();" class="btn-rejouer">Rejouer</button>
+	</div>
 
-if ($monstre->pv > 0) {
-    $monstre->attaquer($joueur);
-} else {
-    echo "[INFO] " . $monstre->nom . " est mort et ne peut pas repliquer.\n";
-}
+	<div class="jeu-conteneur">
 
-echo "\n=== FIN DE LA SIMULATION ===\n";
+		<div class="jeu-conteneur">
+
+			<div id="plateau">
+				<?php
+				for ($y = 0; $y < 10; $y++) {
+					for ($x = 0; $x < 10; $x++) {
+						echo "<div class='case' id='case-$x-$y'></div>";
+					}
+				}
+				?>
+			</div>
+
+			<div id="console">[System] Le jeu est prêt ! Déplacez-vous.</div>
+
+		</div>
+
+		<script>
+			let hero = { nom: "<?php echo $hero->nom; ?>", pv: <?php echo $hero->pv; ?>, force: <?php echo $hero->force; ?>, x: <?php echo $hero->x; ?>, y: <?php echo $hero->y; ?> };
+			let monstre = { nom: "<?php echo $monstre->nom; ?>", pv: <?php echo $monstre->pv; ?>, force: <?php echo $monstre->force; ?>, x: <?php echo $monstre->x; ?>, y: <?php echo $monstre->y; ?> };
+		</script>
+
+		<script src="script.js"></script>
+
+</body>
+
+</html>
