@@ -1,6 +1,6 @@
 # Mini RPG Game ⚔️
 
-Un mini-jeu de rôle en 2D au tour par tour développé en **PHP (Programmation Orientée Objet)**, **HTML**, **CSS** et **JavaScript**. 
+Un mini-jeu de rôle en 2D au tour par tour développé en **PHP (Programmation Orientée Objet)**, **HTML5**, **CSS3** et **JavaScript**. 
 
 Le projet est entièrement modularisé en suivant les bonnes pratiques de développement (séparation de la logique métier, du style et de l'interactivité).
 
@@ -26,13 +26,17 @@ Le code est structuré de manière propre et lisible :
 * **Déplacements :** Utilisez les touches **Z** (Haut), **S** (Bas), **Q** (Gauche), **D** (Droite) de votre clavier.
 * **Attaque :** Faites un **clic gauche** avec la souris directement sur le Monstre (carré rouge) lorsque votre Héros (carré bleu) est sur une case adjacente.
 
-## 🛠️ Installation et Lancement local
+## 🛠️ Étapes de lancement
 
-### Prérequis
-* Avoir **PHP** (version 7.4 ou supérieure recommandée) installé sur votre machine informatique.
+1. **Installez PHP** sur votre machine si ce n'est pas déjà fait (version 7.4 ou supérieure). Vous pouvez tester sa présence dans votre terminal avec : `php -v`.
+2. **Téléchargez les fichiers** du projet ou clonez le dépôt Git avec la commande :  
+   `git clone <URL_DE_VOTRE_DEPOT_GITHUB>`
+3. **Ouvrez un terminal** et déplacez-vous directement dans le dossier du projet :  
+   `cd le-nom-du-dossier`
+4. **Exécutez la commande** suivante pour démarrer le serveur web local de PHP :  
+   `php -S localhost:8000`
+5. **Lancez votre navigateur web** et accédez au jeu via l'adresse suivante :  
+   👉 [http://localhost:8000](http://localhost:8000)
 
-### Étapes de lancement
-1. Clonez ce dépôt ou téléchargez les fichiers dans un dossier local.
-2. Ouvrez votre terminal dans ce dossier :
-   ```bash
-   cd /chemin/vers/votre/dossier
+---
+Développé dans un cadre académique pour la validation des compétences en POO PHP et en intégration Web interactive.
