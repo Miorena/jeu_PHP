@@ -26,7 +26,7 @@ $monstre = new Personnage("Monstre", 100, 20, $monstreX, $monstreY);
 <body>
 
 	<h1>Mini RPG Game</h1>
-	<p>Déplacement: <strong>W, S, A, D</strong> | Attaquer: <strong>Clic gauche</strong> quand le hero est
+	<p>Déplacement: <strong>Z, S, Q, D</strong> | Attaquer: <strong>Clic gauche</strong> quand le hero est
 		<strong>SUR</strong> le monstre
 	</p>
 

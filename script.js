@@ -30,9 +30,9 @@ window.addEventListener("keydown", function (event) {
   let ancienX = hero.x;
   let ancienY = hero.y;
 
-  if (touche === "w" && hero.y > 0) hero.y--; // haut
+  if (touche === "z" && hero.y > 0) hero.y--; // haut
   if (touche === "s" && hero.y < 9) hero.y++; // bas
-  if (touche === "a" && hero.x > 0) hero.x--; // gauche
+  if (touche === "q" && hero.x > 0) hero.x--; // gauche
   if (touche === "d" && hero.x < 9) hero.x++; // droit
 
   if (hero.x !== ancienX || hero.y !== ancienY) {
