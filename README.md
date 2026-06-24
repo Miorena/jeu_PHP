@@ -9,7 +9,7 @@ Le projet est entièrement modularisé en suivant les bonnes pratiques de dével
 * **Plateau dynamique 10x10 :** Grille générée dynamiquement via PHP.
 * **Génération Aléatoire :** Les positions de départ du Héros et du Monstre sont générées aléatoirement à chaque lancement, en évitant qu'ils n'apparaissent sur la même case.
 * **Système de combat :** Attaque au corps-à-corps (clic gauche sur le monstre à une case de distance) avec riposte automatique du monstre s'il survit.
-* **Console d'action :** Un journal de logs vertical situé à droite du plateau affiche en temps réel les mouvements, les dégâts infligés, reçus, ainsi que l'état de la partie.
+* **Console d'action :** Un journal de logs situé à droite du plateau affiche en temps réel les mouvements, les dégâts infligés, reçus, ainsi que l'état de la partie.
 * **Bouton Rejouer :** Permet de réinitialiser la partie et de repositionner aléatoirement les entités d'un seul clic.
 
 ## 📁 Architecture du Projet
