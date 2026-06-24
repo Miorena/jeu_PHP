@@ -45,26 +45,26 @@ document.getElementById("plateau").addEventListener("click", function (event) {
   if (event.target.classList.contains("monstre")) {
     if (hero.pv <= 0 || monstre.pv <= 0) return;
 
-		let distance = Math.abs(hero.x - monstre.x) + Math.abs(hero.y - monstre.y);
+    let distance = Math.abs(hero.x - monstre.x) + Math.abs(hero.y - monstre.y);
 
-		if (distance <= 1) {
-			monstre.pv -= hero.force;
-			if (monstre.pv < 0) monstre.pv = 0;
-			document.getElementById('monstre-pv').innerText = monstre.pv;
-			consoleLog.innerText = `[Attaque] Vous infligez ${hero.force} dégâts au monstre`;
+    if (distance <= 1) {
+      monstre.pv -= hero.force;
+      if (monstre.pv < 0) monstre.pv = 0;
+      document.getElementById("monstre-pv").innerText = monstre.pv;
+      consoleLog.innerText = `[Attaque] Vous infligez ${hero.force} dégâts au monstre`;
 
-			if (monstre.pv > 0) {
-				hero.pv -= monstre.force;
-				if (hero.pv < 0) hero.pv = 0;
-				document.getElementById('hero-pv').innerText = hero.pv;
-				consoleLog.innerText += `\n[Riposte] Le monstre vous inflige ${monstre.force} dégâts !`;
-			} else {
-				consoleLog.innerText += `\n[Victoire] Le monstre est mort !`;
-			}
-		} else {
-			consoleLog.innerText = `[Info] Trop loin pour attaquer ! Rapprochez-vous du monstre rouge.`;
-		}
-		miseAJourDuPlateau();
+      if (monstre.pv > 0) {
+        hero.pv -= monstre.force;
+        if (hero.pv < 0) hero.pv = 0;
+        document.getElementById("hero-pv").innerText = hero.pv;
+        consoleLog.innerText += `\n[Riposte] Le monstre vous inflige ${monstre.force} dégâts !`;
+      } else {
+        consoleLog.innerText += `\n[Victoire] Le monstre est mort !`;
+      }
+    } else {
+      consoleLog.innerText = `[Info] Trop loin pour attaquer ! Rapprochez-vous du monstre rouge.`;
+    }
+    miseAJourDuPlateau();
   }
 });
 
