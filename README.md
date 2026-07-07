@@ -1,30 +1,30 @@
 # Mini RPG Game ⚔️
 
-Un mini-jeu de rôle en 2D au tour par tour développé en **PHP (Programmation Orientée Objet)**, **HTML5**, **CSS3** et **JavaScript**. 
+Un mini-jeu de rôle en 2D au tour par tour développé **entièrement en PHP (Programmation Orientée Objet)**, avec **HTML5** et **CSS3** pour l'affichage. Aucun JavaScript n'est utilisé : chaque action (déplacement, attaque, rejouer) est traitée côté serveur via des formulaires, et l'état de la partie est conservé dans une session PHP.
 
-Le projet est entièrement modularisé en suivant les bonnes pratiques de développement (séparation de la logique métier, du style et de l'interactivité).
+Le projet est entièrement modularisé en suivant les bonnes pratiques de développement (séparation de la logique métier et du style).
 
 ## 🚀 Fonctionnalités
 
 * **Plateau dynamique 10x10 :** Grille générée dynamiquement via PHP.
 * **Génération Aléatoire :** Les positions de départ du Héros et du Monstre sont générées aléatoirement à chaque lancement, en évitant qu'ils n'apparaissent sur la même case.
-* **Système de combat :** Attaque au corps-à-corps (clic gauche sur le monstre à une case de distance) avec riposte automatique du monstre s'il survit.
-* **Console d'action :** Un journal de logs situé à droite du plateau affiche en temps réel les mouvements, les dégâts infligés, reçus, ainsi que l'état de la partie.
+* **Système de combat :** Attaque au corps-à-corps (bouton sur la case du monstre, actif à une case de distance) avec riposte automatique du monstre s'il survit.
+* **Console d'action :** Un journal de logs situé à droite du plateau affiche le dernier mouvement, les dégâts infligés/reçus, ainsi que l'état de la partie.
 * **Bouton Rejouer :** Permet de réinitialiser la partie et de repositionner aléatoirement les entités d'un seul clic.
+* **État persistant en session PHP :** La position et les PV des personnages sont conservés entre chaque rechargement de page grâce à `$_SESSION`.
 
 ## 📁 Architecture du Projet
 
 Le code est structuré de manière propre et lisible :
 
-* `Personnage.php` : Contient la classe PHP `Personnage` (logique POO : propriétés, constructeur).
-* `index.php` : La vue principale (structure HTML, instanciation des personnages en PHP, transmission des données vers le JS).
-* `style.css` : Gestion complète du design (Mise en page `Flexbox`, affichage de la grille en `CSS Grid`, couleurs).
-* `script.js` : Contrôleur gérant les événements clavier, la logique de déplacement, le calcul des distances et le système de combat.
+* `personnage.php` : Contient la classe PHP `Personnage` (propriétés, constructeur, et toute la logique métier : `seDeplacer()`, `distance()`, `attaquer()`, `estVivant()`).
+* `index.php` : Point d'entrée unique du jeu. Gère la session, traite les actions envoyées en `POST` (déplacement, attaque, reset) selon le pattern Post/Redirect/Get, puis affiche le plateau et la console à partir de l'état courant.
+* `style.css` : Gestion complète du design (mise en page `Flexbox`, affichage de la grille en `CSS Grid`, couleurs, boutons).
 
 ## 🎮 Commandes du jeu
 
-* **Déplacements :** Utilisez les touches **Z** (Haut), **S** (Bas), **Q** (Gauche), **D** (Droite) de votre clavier.
-* **Attaque :** Faites un **clic gauche** avec la souris directement sur le Monstre (carré rouge) lorsque votre Héros (carré bleu) est sur une case adjacente.
+* **Déplacements :** Cliquez sur les boutons **Z** (Haut), **S** (Bas), **Q** (Gauche), **D** (Droite) affichés sous le plateau.
+* **Attaque :** Cliquez sur la case du Monstre (carré rouge) lorsque votre Héros (carré bleu) est sur une case adjacente (ou la même case).
 
 ## 🛠️ Étapes de lancement
 
